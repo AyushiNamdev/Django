@@ -1,0 +1,14 @@
+from signal import default_int_handler
+from django.db import models
+
+# Create your models here.
+class Product(models.Model):
+    name = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='products', default = 'no_pictures.png')
+    price = models.FloatField(help_text= 'in US dollars $')
+    created= models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def _str__(self):
+        return f"{self.name}"
+
